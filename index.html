@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>가사 플레이어</title>
-  <link rel="stylesheet" href="lyrics.min.css" />
+  <link rel="stylesheet" href="lyrics.css" />
 </head>
 <body>
   <div class="lyrics-container" id="view-container">
@@ -13,11 +13,20 @@
 
   <div class="lyrics-container" id="preview-container">
     <div id="lyrics-preview">
-      <div id="preview-past" class="preview-section">OBS -> 브라우저 추가 -> 너비1000,높이900</div>
+      <div id="preview-past" class="preview-section"></div>
       <div class="horizontal-line"></div>
-      <div id="preview-current" class="preview-section">OBS에서 이 박스가 안보이게 하단을 잘라주세요 (Alt+드래그)</div>
+      <div id="preview-current" class="preview-section"></div>
       <div class="horizontal-line"></div>
       <div id="preview-future" class="preview-section"></div>
+    </div>
+  </div>
+
+  <div class="song-info-container"><div class="no-metadata">가사 파일을 선택해주세요</div>
+    <div class="song-title-artist">
+      <span id="song-artist"></span><span id="song-title"></span>
+    </div>
+    <div class="song-meta">
+      <span id="song-key"></span> <span id="song-bpm"></span>
     </div>
   </div>
 
@@ -30,12 +39,11 @@
       <div class="control-group">
         <input type="hidden" id="youtubeUrl" value="https://www.youtube.com/watch?v=h-XrgiZiQgw" />
         <input type="file" id="lyricFile" accept=".lrc" />
-        <button id="openButton">새로고침</button>
       </div>
     
       <div class="control-group">
         <div class="radio-group">
-          <label>가사 정렬:</label>
+          <label class="radio-label">가사 정렬:</label>
           <div class="radio-option">
             <input type="radio" id="leftAlign" name="alignment" value="left" checked />
             <label for="leftAlign">왼쪽</label>
@@ -53,7 +61,7 @@
     
       <div class="control-group">
         <div class="radio-group">
-          <label>프리뷰 정렬:</label>
+          <label class="radio-label">프리뷰 정렬:</label>
           <div class="radio-option">
             <input type="radio" id="previewLeftAlign" name="previewAlignment" value="left" checked />
             <label for="previewLeftAlign">왼쪽</label>
@@ -69,13 +77,12 @@
         </div>
       </div>
       
-      <div class="control-group">
-        <label for="fontSizeSelect">싱크:</label>
-        <span class="offset-display" id="offsetDisplay">0.00초</span>
+      <div class="sync-line">
+        <label class="radio-label">싱크:</label>
         <div class="offset-controls">
           <button onclick="adjustOffset(-1)" class="secondary">-1</button>
           <button onclick="adjustOffset(-0.25)" class="secondary">-0.25</button>
-          <button onclick="resetOffset()">원본</button>
+          <span class="offset-display" id="offsetDisplay">0.00초</span>
           <button onclick="adjustOffset(0.25)" class="secondary">+0.25</button>
           <button onclick="adjustOffset(1)" class="secondary">+1</button>
         </div>
@@ -84,6 +91,6 @@
       <div class="control-group"></div>
     </div>
   </div>
-  <script src="lyrics.min.js"></script>
+  <script src="lyrics.js"></script>
 </body>
 </html>
